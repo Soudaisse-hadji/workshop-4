@@ -1,4 +1,5 @@
 import * as http from "http";
+import { randomBytes } from "crypto";
 import {
   BASE_ONION_ROUTER_PORT,
   BASE_USER_PORT,
@@ -390,9 +391,7 @@ describe("Onion Routing", () => {
       });
 
       it("After receiving a message, a user's /getLastReceivedMessage route returns the right message", async () => {
-        const randomNumber = crypto
-          .getRandomValues(new Uint32Array(1))[0]
-          .toString();
+        const randomNumber = randomBytes(4).readUInt32BE(0).toString();
 
         const randomMessage = `Hello user, my favourite number is ${randomNumber}`;
 

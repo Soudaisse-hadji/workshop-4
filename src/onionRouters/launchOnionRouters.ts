@@ -1,4 +1,6 @@
 import { simpleOnionRouter } from "./simpleOnionRouter";
+import { randomBytes } from "crypto";
+
 
 export async function launchOnionRouters(n: number) {
   const promises = [];
